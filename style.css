@@ -16,19 +16,28 @@ html {
     background: linear-gradient(rgba(31, 7, 7, .7), rgba(0, 0, 0, .7)),
     url(img/emily-bernal-v9vII5gV8Lw-unsplash.jpg) center no-repeat;
     background-size: cover;
+    perspective: 100rem; /* 3D space */
 }
 
 .forms-wrapper {
+    transform-style: preserve-3d;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: calc(50% - 17.5rem);
+    left: calc(50% - 25rem);
+    transform: rotateY(-10deg);
+    transition: transform .5s, left .5s;
+}
+
+.forms-wrapper.change {
+    transform: rotateY(100deg);
+    left: calc(50% + 25rem);
 }
 
 .forms-wrapper form {
+    position: absolute;
     width: 50rem;
     height: 35rem;
-    background-color: rgb(86, 75, 60);
+    background-color: rgb(86, 75, 60, .5);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -36,16 +45,27 @@ html {
     box-shadow: .1rem .1rem .1rem #ccc inset, -.1rem -.1rem 1rem #ccc inset;
 }
 
+.signup-form {
+    transform: rotateY(270deg) translateZ(25rem) translateX(-25rem);
+}
+
 form a {
     position: absolute;
     top: 2rem;
-    left: 2rem;
     background-color: aliceblue;
     font-weight: 600;
     color: rgb(86, 75, 60);
     letter-spacing: .2rem;
-    padding: .5rem 1rem;
     border-radius: .5rem ;
+    padding: .5rem 1rem;
+}
+
+.signup-btn {
+   left: 2rem;
+}
+
+.signin-btn {
+    right: 2rem;
 }
 
 form h2 {
@@ -74,5 +94,11 @@ form h2 {
 
 .input-wrapper input::placeholder {
     color: aliceblue;
-    
+}
+
+.input-wrapper input[type='submit'] {
+    background-color:aliceblue;
+    color: rgb(86, 75, 60);
+    font-weight: 900;
+    cursor: pointer;
 }
